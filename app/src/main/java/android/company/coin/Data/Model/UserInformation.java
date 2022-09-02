@@ -1,32 +1,23 @@
 package android.company.coin.Data.Model;
 
 public class UserInformation {
-    String userName;
-    String userId;
-    String userPassword;
-
+    String name;
+    int id;
 
     public String getUserName() {
-        return userName;
+        return name;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.name = userName;
     }
 
-    public String getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
 }

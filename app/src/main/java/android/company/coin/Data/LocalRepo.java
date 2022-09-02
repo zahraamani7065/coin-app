@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 
 public class LocalRepo {
     public static LocalRepo localRepo;
-    public static UserInformation userInformation;
+    public static UserInformation cachedUserInformation;
     private final Gson gson;
     private final SharedPreferences sharedPreferences;
     private static final String USER_INFO="_user_info";
@@ -29,8 +29,22 @@ public class LocalRepo {
         this.sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
 
     }
-    public void setUserInfo(){
+    public void setUserInfo(UserInformation userInformation){
         sharedPreferences.edit().putString(USER_INFO,gson.toJson(userInformation)).apply();
+        cachedUserInformation=userInformation;
+    }
+    public UserInformation getUserInfo(){
+        if(cachedUserInformation==null){
+            String userInfo=sharedPreferences.getString(USER_INFO,null);
+            if(!userInfo.isEmpty()){
+                cachedUserInformation=gson.fromJson(userInfo,UserInformation.class);
+            }
+        }
+        return cachedUserInformation;
+    }
 
+    public void logOut(){
+        cachedUserInformation=null;
+        sharedPreferences.edit().clear().apply();
     }
 }

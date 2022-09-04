@@ -3,7 +3,15 @@ package android.company.coin.Data.Model;
 public class SignUpRequest {
     String name;
     String password;
+    String email;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;

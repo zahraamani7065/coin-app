@@ -1,19 +1,20 @@
 package android.company.coin.Data;
 
+import android.company.coin.AppConstant;
 import android.company.coin.Data.Model.User;
 import android.company.coin.Data.Model.UserInformation;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
 public class LocalRepo {
     public static LocalRepo localRepo;
-    public static UserInformation cachedUserInformation;
+    public static User cachedUserInformation;
     private final Gson gson;
     private final SharedPreferences sharedPreferences;
-    private static final String USER_INFO="_user_info";
 
 
     public static LocalRepo getInstance(Context context){
@@ -29,15 +30,15 @@ public class LocalRepo {
         this.sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
 
     }
-    public void setUserInfo(UserInformation userInformation){
-        sharedPreferences.edit().putString(USER_INFO,gson.toJson(userInformation)).apply();
+    public void setUserInfo(User userInformation){
+        sharedPreferences.edit().putString(AppConstant.USER_INFO,gson.toJson(userInformation)).apply();
         cachedUserInformation=userInformation;
     }
-    public UserInformation getUserInfo(){
+    public User getUserInfo(){
         if(cachedUserInformation==null){
-            String userInfo=sharedPreferences.getString(USER_INFO,null);
-            if(!userInfo.isEmpty()){
-                cachedUserInformation=gson.fromJson(userInfo,UserInformation.class);
+            String userInfo=sharedPreferences.getString(AppConstant.USER_INFO,null);
+            if(!TextUtils.isEmpty(userInfo)){
+                cachedUserInformation=gson.fromJson(userInfo,User.class);
             }
         }
         return cachedUserInformation;

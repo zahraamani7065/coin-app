@@ -2,7 +2,8 @@ package android.company.coin.Splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.company.coin.LogIn.LogInActivity;
+import android.company.coin.Data.LocalRepo;
+import android.company.coin.Main.MainActivity;
 import android.company.coin.R;
 import android.company.coin.Signup.SignUpActivity;
 import android.content.Intent;
@@ -12,9 +13,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class splashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
     private TextView splashText;
     Animation animationText;
+    SignUpActivity signUpActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class splashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         splashText=findViewById(R.id.text_splash);
         animationText= AnimationUtils.loadAnimation(this,R.anim.text_animation);
+
 
 
         splashText.setAnimation(animationText);
@@ -34,7 +38,12 @@ public class splashActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                startActivity(new Intent(splashActivity.this, SignUpActivity.class));
+               if(LocalRepo.getInstance(getApplicationContext()).getUserInfo()!=null){
+                   startActivity(new Intent(SplashActivity.this, MainActivity.class));
+               }
+               else{
+                startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
+               }
                 finish();
             }
         }.start();

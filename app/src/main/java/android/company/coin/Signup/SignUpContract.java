@@ -2,24 +2,27 @@ package android.company.coin.Signup;
 
 import android.company.coin.BasePresenter;
 import android.company.coin.BaseView;
-import android.company.coin.LogIn.LogInContract;
 
-public class SignUpContract {
+public interface SignUpContract {
 
 
     interface View extends BaseView {
 
+        void showSignUpError(Throwable e);
 
-        void showSignUpError();
+        void setProgressBarVisible();
 
-        void setProgressBarVisibility();
+        void setProgressBarGone();
 
+        void showSignUpSuccessFull();
+
+        void showEmailValidationError();
     }
 
 
-    interface Presenter extends BasePresenter<LogInContract.View> {
+    interface Presenter extends BasePresenter<SignUpContract.View> {
 
-        void signUpButtonClick(String userName,String email,String passWord);
+        void signUpButtonClick(String userName,String email,String passWord,String passwordConfirmation2);
 
         void goToLogIn();
 

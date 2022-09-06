@@ -5,6 +5,16 @@ public class SignUpRequest {
     String password;
     String email;
 
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
+
+    String passwordConfirmation;
+
     public String getEmail() {
         return email;
     }

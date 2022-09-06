@@ -32,6 +32,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
     @Override
     public void onDetach() {
         view=null;
+        disposable.dispose();
 
     }
 
@@ -39,16 +40,18 @@ public class SignupPresenter implements SignUpContract.Presenter{
     public void signUpButtonClick(String userName,String email, String passWord,String passwordConfirmation) {
         view.setProgressBarVisible();
 
-//        if(!Commons.CheckConnection(view.getContext())){
-//            view.showNetworkError();
+        if(!Commons.CheckConnection(view.getContext())){
+            view.showNetworkError();
+            view.setProgressBarGone();
+            return;
+        }
+//        if(!email.endsWith(String.valueOf(R.string.email_contains))){
+//            view.showEmailValidationError();
 //            view.setProgressBarGone();
 //            return;
 //        }
-        if(!email.endsWith(String.valueOf(R.string.email_contains))){
-            view.showEmailValidationError();
-        }
 
-        Data.getInstance(view.getContext()).sinUpRequest(userName,email,passWord)
+        Data.getInstance(view.getContext()).sinUpRequest(userName,email,passWord,passwordConfirmation)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<User>() {
@@ -56,6 +59,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
                     public void onSubscribe(Disposable d) {
 
                         Log.i(AppConstant.TAG, "onSubscribe: ");
+                        disposable=d;
                     }
 
                     @Override
@@ -72,6 +76,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
                     public void onError(Throwable e) {
                         Log.i("test", "onError: "+e);
                         view.showSignUpError(e);
+                        view.setProgressBarGone();
                     }
                 });
 

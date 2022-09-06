@@ -57,11 +57,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
                  if(getPasswordConfirmation.isEmpty()){
                      errorMessage.setText(R.string.empty_field_message);
                  }
-                if(getPassword!=getPasswordConfirmation){
 
-                    errorMessage.setText(R.string.passwordConfirmation);
-                    return;
-                }
 
                  signUpPresenter.signUpButtonClick(getUserName,getEmail,getPassword,getPasswordConfirmation);
 
@@ -87,7 +83,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     @Override
     public void setProgressBarVisible() {
             progressBar.setVisibility(View.VISIBLE);
-
     }
 
     @Override

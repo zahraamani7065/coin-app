@@ -50,11 +50,12 @@ public class Data {
         this.localRepo=localRepo;
     }
 
-    public Single<User> sinUpRequest(String name,String email,String password){
+    public Single<User> sinUpRequest(String name,String email,String password,String passwordConfirmation){
         SignUpRequest signUpRequest=new SignUpRequest();
         signUpRequest.setName(name);
         signUpRequest.setPassword(password);
         signUpRequest.setEmail(email);
+        signUpRequest.setPasswordConfirmation(passwordConfirmation);
         return apiService.requestSignUp(signUpRequest);
 
     }

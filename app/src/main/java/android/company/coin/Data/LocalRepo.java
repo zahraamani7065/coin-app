@@ -18,10 +18,12 @@ public class LocalRepo {
 
 
     public static LocalRepo getInstance(Context context){
+
         if(localRepo==null){
             localRepo=new LocalRepo(context,new Gson());
         }
         return localRepo;
+
     }
 
     public LocalRepo(Context context , Gson gson) {
@@ -31,11 +33,14 @@ public class LocalRepo {
 
     }
     public void setUserInfo(User userInformation){
+
         sharedPreferences.edit().putString(AppConstant.USER_INFO,gson.toJson(userInformation)).apply();
         cachedUserInformation=userInformation;
+
     }
     public User getUserInfo(){
         if(cachedUserInformation==null){
+
             String userInfo=sharedPreferences.getString(AppConstant.USER_INFO,null);
             if(!TextUtils.isEmpty(userInfo)){
                 cachedUserInformation=gson.fromJson(userInfo,User.class);

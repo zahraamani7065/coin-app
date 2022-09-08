@@ -65,11 +65,11 @@ public class SignupPresenter implements SignUpContract.Presenter{
                     @Override
                     public void onSuccess(User user) {
                         Log.i(AppConstant.TAG, "onSubscribe: ");
+                        Log.i("ssds", "onSuccess: "+user.getName());
                         localRepo.setUserInfo(user);
                         view.setProgressBarGone();
                         view.showSignUpSuccessFull();
                         onDetach();
-
                     }
 
                     @Override
@@ -80,14 +80,10 @@ public class SignupPresenter implements SignUpContract.Presenter{
                     }
                 });
 
-
-
-
     }
 
     @Override
     public void goToLogIn() {
-
     }
 
 

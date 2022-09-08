@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 
 public class LocalRepo {
@@ -32,7 +34,7 @@ public class LocalRepo {
         this.sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
 
     }
-    public void setUserInfo(User userInformation){
+    public void setUserInfo(@NonNull User userInformation){
 
         sharedPreferences.edit().putString(AppConstant.USER_INFO,gson.toJson(userInformation)).apply();
         cachedUserInformation=userInformation;

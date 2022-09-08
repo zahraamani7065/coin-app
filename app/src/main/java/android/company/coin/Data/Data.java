@@ -6,6 +6,7 @@ import android.company.coin.AppConstant;
 import android.company.coin.Data.Model.SignUpRequest;
 import android.company.coin.Data.Model.User;
 import android.company.coin.Data.Model.UserInformation;
+import android.company.coin.Utils.Commons;
 import android.content.Context;
 
 import java.util.HashMap;
@@ -19,35 +20,33 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Data {
     private static Data data;
-    private final LocalRepo localRepo;
     private final ApiService apiService;
 
 
 
     public static Data getInstance(Context context) {
 
-        HttpLoggingInterceptor httpLoggingInterceptor=new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient okHttpClient=new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
+//        HttpLoggingInterceptor httpLoggingInterceptor=new HttpLoggingInterceptor();
+//        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//
+//        OkHttpClient okHttpClient=new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
         if(data==null){
         ApiService apiService=new Retrofit.Builder()
                     .baseUrl(AppConstant.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .client(okHttpClient)
+                    .client(Commons.getHttpClient())
                     .build().create(ApiService.class);
 
-        data=new Data(LocalRepo.getInstance(context),apiService);
+        data=new Data(apiService);
         }
 
         return data;
     }
 
 
-    public Data(LocalRepo  localRepo,ApiService apiService) {
+    public Data(ApiService apiService) {
         this.apiService=apiService;
-        this.localRepo=localRepo;
     }
 
     public Single<User> sinUpRequest(String name,String email,String password,String passwordConfirmation){

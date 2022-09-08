@@ -11,6 +11,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
-    @POST("register?")
+    @POST("register")
     Single<User> requestSignUp(@Body SignUpRequest signUpRequest);
 }

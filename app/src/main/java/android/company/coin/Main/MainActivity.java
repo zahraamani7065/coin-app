@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 localRepo=LocalRepo.getInstance(getApplicationContext());
                 localRepo.logOut();
                 startActivity(new Intent(MainActivity.this,SignUpActivity.class));
+                finish();
             }
         });
 

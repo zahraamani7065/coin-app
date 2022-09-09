@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     EditText fullName,email,password,passwordConfirmation;
     ProgressBar progressBar;
     SignUpContract.Presenter signUpPresenter;
-    TextView errorMessage;
+    public static TextView errorMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,26 +36,31 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
                 if(fullName.getText()==null){
                         errorMessage.setText(R.string.empty_field_message);
+                        return;
                 }
 
                 String getEmail=email.getText().toString();
                 if(getEmail.isEmpty()){
                     errorMessage.setText(R.string.empty_field_message);
+                    return;
                 }
 
                 String getPassword=password.getText().toString();
                  if(getPassword.isEmpty()){
                     errorMessage.setText(R.string.empty_field_message);
+                    return;
                 }
 
-                if(getPassword.length()<2){
+                if(getPassword.length()<8){
                      errorMessage.setText(R.string.invalid_password);
+                     return;
                  }
 
                  String getPasswordConfirmation=passwordConfirmation.getText().toString();
 
                  if(getPasswordConfirmation.isEmpty()){
                      errorMessage.setText(R.string.empty_field_message);
+                     return;
                  }
 
 
@@ -75,8 +80,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     }
     @Override
-    public void showSignUpError(Throwable e) {
-        errorMessage.setText(e.toString());
+    public void showSignUpError(String text) {
+        errorMessage.setText(text);
 
     }
 

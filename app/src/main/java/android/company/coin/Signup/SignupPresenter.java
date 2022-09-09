@@ -4,6 +4,7 @@ import android.company.coin.AppConstant;
 import android.company.coin.ContextProvider;
 import android.company.coin.Data.Data;
 import android.company.coin.Data.LocalRepo;
+import android.company.coin.Data.Model.Root;
 import android.company.coin.Data.Model.User;
 import android.company.coin.R;
 import android.company.coin.Utils.Commons;
@@ -45,16 +46,16 @@ public class SignupPresenter implements SignUpContract.Presenter{
             view.setProgressBarGone();
             return;
         }
-//        if(!email.endsWith(String.valueOf(R.string.email_contains))){
-//            view.showEmailValidationError();
-//            view.setProgressBarGone();
-//            return;
-//        }
+        if(!email.endsWith(String.valueOf(R.string.email_contains))){
+            view.showEmailValidationError();
+            view.setProgressBarGone();
+            return;
+        }
 
         Data.getInstance(view.getContext()).sinUpRequest(userName,email,passWord,passwordConfirmation)
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<User>() {
+                .subscribe(new SingleObserver<Root>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
@@ -63,19 +64,28 @@ public class SignupPresenter implements SignUpContract.Presenter{
                     }
 
                     @Override
-                    public void onSuccess(User user) {
-                        Log.i(AppConstant.TAG, "onSubscribe: ");
-                        Log.i("ssds", "onSuccess: "+user.getName());
-                        localRepo.setUserInfo(user);
-                        view.setProgressBarGone();
-                        view.showSignUpSuccessFull();
-                        onDetach();
-                    }
+                    public void onSuccess(Root root) {
 
+                        Log.i("statusss", "onSuccess: " + root.status);
+                        if(root.getUser()!=null){
+                          Log.i(AppConstant.TAG, "onSubscribe: ");
+                          Log.i("ssds", "onSuccess: "+root.user.getName());
+                          localRepo.setUserInfo(root.user);
+
+                          view.showSignUpSuccessFull();
+                          onDetach();
+                        }
+
+                        else{
+                         view.showSignUpError(root.getMessage());
+                          view.setProgressBarGone();
+                        }
+
+                    }
                     @Override
                     public void onError(Throwable e) {
                         Log.i("test", "onError: "+e);
-                        view.showSignUpError(e);
+                        view.showSignUpError(e.toString());
                         view.setProgressBarGone();
                     }
                 });

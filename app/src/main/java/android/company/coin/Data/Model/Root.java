@@ -4,11 +4,14 @@ public class Root {
     public User user;
     public String token;
     public Status status;
+    public String message;
 
-    public Root(User user, String token, Status status) {
-        this.user = user;
-        this.token = token;
-        this.status = status;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public User getUser() {

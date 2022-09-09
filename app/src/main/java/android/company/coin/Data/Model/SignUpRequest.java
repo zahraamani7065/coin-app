@@ -4,16 +4,19 @@ public class SignUpRequest {
     String name;
     String password;
     String email;
+    String password_confirmation;
+    
 
-    public String getPasswordConfirmation() {
-        return passwordConfirmation;
-    }
+
+
 
     public void setPasswordConfirmation(String passwordConfirmation) {
-        this.passwordConfirmation = passwordConfirmation;
+        this.password_confirmation = passwordConfirmation;
     }
-
-    String passwordConfirmation;
+    public String getPasswordConfirmation() {
+        return password_confirmation;
+    }
+    
 
     public String getEmail() {
         return email;

@@ -2,7 +2,6 @@ package android.company.coin.Data;
 
 import android.company.coin.AppConstant;
 import android.company.coin.Data.Model.User;
-import android.company.coin.Data.Model.UserInformation;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -32,7 +31,6 @@ public class LocalRepo {
 
         this.gson=gson;
         this.sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
-
     }
     public void setUserInfo(@NonNull User userInformation){
 

@@ -8,7 +8,7 @@ public interface SignUpContract {
 
     interface View extends BaseView {
 
-        void showSignUpError(Throwable e);
+        void showSignUpError(String massage);
 
         void setProgressBarVisible();
 

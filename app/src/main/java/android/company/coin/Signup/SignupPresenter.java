@@ -49,17 +49,15 @@ public class SignupPresenter implements SignUpContract.Presenter{
 
                     @Override
                     public void onSuccess(Root root) {
-
                         if(root.getUser()!=null){
-                          Log.i(AppConstant.TAG, "onSubscribe: ");
-                          localRepo.setUserInfoSignUp(root.getUser());
-                          view.showSignUpSuccessFull();
-                          onDetach();
+                            localRepo.setUserInfoSignUp(root.getUser());
+                            view.showSignUpSuccessFull();
+                            onDetach();
                         }
 
                         else{
-                         view.showSignUpError(root.getMessage());
-                          view.setProgressBarGone();
+                            view.showSignUpError(root.getMessage());
+                            view.setProgressBarGone();
                         }
 
                     }
@@ -78,6 +76,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
         view.errorMassageGone();
         if(getUserName.isEmpty()){
             view.showErrorMessage(R.string.empty_field_message);
+                          Log.i(AppConstant.TAG, "onSubscribe: ");
             return;
         }
         if(getEmail.isEmpty()){

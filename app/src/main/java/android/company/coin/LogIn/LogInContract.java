@@ -10,6 +10,7 @@ public interface LogInContract {
         void showLogInError(int message);
         void errorMessageGone();
         void showSuccess();
+        void showLogInError(String massage);
 
     }
     interface Presenter extends BasePresenter<View> {

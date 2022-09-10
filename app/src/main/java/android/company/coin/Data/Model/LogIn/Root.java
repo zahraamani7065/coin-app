@@ -6,6 +6,15 @@ public class Root {
     private String token;
     private Status status;
     private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public User getUser() {
         return user;
     }

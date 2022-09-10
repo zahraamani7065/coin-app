@@ -94,6 +94,11 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
         finish();
     }
 
+    @Override
+    public void showLogInError(String massage) {
+        errorMessage.setText(massage);
+    }
+
     private void initialViews(){
         email=findViewById(R.id.LogIn_email);
         password=findViewById(R.id.log_in_password);

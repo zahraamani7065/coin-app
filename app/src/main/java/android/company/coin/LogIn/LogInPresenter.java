@@ -52,12 +52,16 @@ public class LogInPresenter implements LogInContract.Presenter{
                             view.showSuccess();
                             onDetach();
                         }
+                        else{
+                            view.setProgressBarGone();
+                            view.showLogInError(root.getMessage());
+                        }
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        view.showLogInError("error");
                     }
                 });
     }

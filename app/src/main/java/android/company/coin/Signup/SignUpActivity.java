@@ -49,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SignUpActivity.this,LogInActivity.class));
+                finish();
             }
         });
 
@@ -78,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     @Override
     public void showSignUpSuccessFull() {
         setProgressBarVisible();
-        MainActivity.start(this);
+        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
         Toast.makeText(this, R.string.welcome, Toast.LENGTH_SHORT).show();
         finish();
     }

@@ -3,16 +3,19 @@ package android.company.coin.LogIn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.company.coin.Data.LocalRepo;
+import android.company.coin.Main.MainActivity;
 import android.company.coin.R;
 import android.company.coin.Signup.SignUpActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LogInActivity extends AppCompatActivity implements LogInContract.View  {
 
@@ -26,21 +29,23 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        initialViews();
         presenter=new LogInPresenter(LocalRepo.getInstance(this));
         presenter.onAttach(this);
-        initialViews();
-        String getEmail=email.getText().toString();
-        if(getEmail.isEmpty()){
-            errorMessage.setText(R.string.empty_field_message);
-        }
-        String getPassword=password.getText().toString();
-        if(getPassword.isEmpty()){
-            errorMessage.setText(R.string.empty_field_message);
-        }
+
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String getEmail=email.getText().toString().trim();
+                String getPassword=password.getText().toString().trim();
+
+                Log.i("email", "onCreate: "+getEmail);
+                presenter.checkValidation(getEmail,getPassword);
+
+                if(errorMessage.getText()==""){
                 presenter.doLogIn(getEmail,getPassword);
+                }
 
             }
         });
@@ -56,10 +61,6 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
     }
 
 
-    @Override
-    public void showNetworkError() {
-
-    }
 
     @Override
     public Context getContext() {
@@ -77,8 +78,20 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
     }
 
     @Override
-    public void showEmailValidationError() {
-        errorMessage.setText(R.string.email_validation_error);
+    public void showLogInError(int message) {
+        errorMessage.setText(message);
+    }
+
+    @Override
+    public void errorMessageGone() {
+        errorMessage.setText("");
+    }
+
+    @Override
+    public void showSuccess() {
+        startActivity(new Intent(LogInActivity.this, MainActivity.class));
+        Toast.makeText(this, R.string.welcome, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void initialViews(){
@@ -89,6 +102,11 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
         errorMessage=findViewById(R.id.LogIn_error_Message);
         progressBar=findViewById(R.id.logIn_progressBar);
         signUpBtn=findViewById(R.id.log_in_sign_up);
+
+    }
+
+    @Override
+    public void showNetworkError() {
 
     }
 }

@@ -1,10 +1,10 @@
 package android.company.coin.Data.Model.SignUp;
 
 public class Root {
-    public User user;
-    public String token;
-    public Status status;
-    public String message;
+    private User user;
+    private String token;
+    private Status status;
+    private String message;
 
     public String getMessage() {
         return message;

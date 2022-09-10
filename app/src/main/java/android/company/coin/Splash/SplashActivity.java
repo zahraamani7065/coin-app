@@ -38,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-               if(LocalRepo.getInstance(getApplicationContext()).getUserInfo()!=null){
+               if(LocalRepo.getInstance(getApplicationContext()).getUserInfoSignUp()!=null || LocalRepo.getInstance(getApplicationContext()).getUserInfoLogIn()!=null){
                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
                }
                else{

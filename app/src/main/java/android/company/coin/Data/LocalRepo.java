@@ -13,7 +13,8 @@ import com.google.gson.Gson;
 
 public class LocalRepo {
     public static LocalRepo localRepo;
-    public static User cachedUserInformation;
+    public static User cachedUserInformationSignUp;
+    public  static android.company.coin.Data.Model.LogIn.User cachedInformationLogIn;
     private final Gson gson;
     private final SharedPreferences sharedPreferences;
 
@@ -32,25 +33,38 @@ public class LocalRepo {
         this.gson=gson;
         this.sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
     }
-    public void setUserInfo(@NonNull User userInformation){
+    public void setUserInfoSignUp(@NonNull User userInformation){
 
         sharedPreferences.edit().putString(AppConstant.USER_INFO,gson.toJson(userInformation)).apply();
-        cachedUserInformation=userInformation;
+        cachedUserInformationSignUp=userInformation;
 
     }
-    public User getUserInfo(){
-        if(cachedUserInformation==null){
+    public void setUserInfoLogIn(@NonNull android.company.coin.Data.Model.LogIn.User user){
+        sharedPreferences.edit().putString(AppConstant.USER_INFO,gson.toJson(user)).apply();
+        cachedInformationLogIn=user;
+    }
+    public User getUserInfoSignUp(){
+        if(cachedUserInformationSignUp==null){
 
             String userInfo=sharedPreferences.getString(AppConstant.USER_INFO,null);
             if(!TextUtils.isEmpty(userInfo)){
-                cachedUserInformation=gson.fromJson(userInfo,User.class);
+                cachedUserInformationSignUp=gson.fromJson(userInfo,User.class);
             }
         }
-        return cachedUserInformation;
+        return cachedUserInformationSignUp;
+    }
+    public android.company.coin.Data.Model.LogIn.User getUserInfoLogIn(){
+        if(cachedInformationLogIn==null){
+            String userInfo=sharedPreferences.getString(AppConstant.USER_INFO,null);
+            if(!TextUtils.isEmpty(userInfo)){
+                cachedInformationLogIn=gson.fromJson(userInfo, android.company.coin.Data.Model.LogIn.User.class);
+            }
+        }
+        return cachedInformationLogIn;
     }
 
     public void logOut(){
-        cachedUserInformation=null;
+        cachedUserInformationSignUp=null;
         sharedPreferences.edit().clear().apply();
     }
 }

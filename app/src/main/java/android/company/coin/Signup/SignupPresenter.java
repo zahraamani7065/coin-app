@@ -1,16 +1,13 @@
 package android.company.coin.Signup;
 
 import android.company.coin.AppConstant;
-import android.company.coin.ContextProvider;
 import android.company.coin.Data.Data;
 import android.company.coin.Data.LocalRepo;
 import android.company.coin.Data.Model.SignUp.Root;
-import android.company.coin.Data.Model.SignUp.User;
 import android.company.coin.R;
 import android.company.coin.Utils.Commons;
 import android.util.Log;
 
-import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -31,7 +28,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
     @Override
     public void onDetach() {
         view=null;
-        disposable.dispose();
+
     }
 
     @Override
@@ -55,8 +52,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
 
                         if(root.getUser()!=null){
                           Log.i(AppConstant.TAG, "onSubscribe: ");
-                          Log.i("ssds", "onSuccess: "+root.user.getName());
-                          localRepo.setUserInfo(root.user);
+                          localRepo.setUserInfoSignUp(root.getUser());
                           view.showSignUpSuccessFull();
                           onDetach();
                         }

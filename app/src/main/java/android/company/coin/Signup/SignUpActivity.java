@@ -2,7 +2,6 @@ package android.company.coin.Signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.company.coin.LogIn.LogInActivity;
 import android.company.coin.Main.MainActivity;
 import android.company.coin.R;
@@ -14,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
     Button logInBtn,signUpBtn,signUpGoogleBtn;
@@ -32,43 +32,18 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String getUserName=fullName.getText().toString();
-
-                if(fullName.getText()==null){
-                        errorMessage.setText(R.string.empty_field_message);
-                        return;
-                }
-
-                String getEmail=email.getText().toString();
-                if(getEmail.isEmpty()){
-                    errorMessage.setText(R.string.empty_field_message);
-                    return;
-                }
-
-                String getPassword=password.getText().toString();
-                 if(getPassword.isEmpty()){
-                    errorMessage.setText(R.string.empty_field_message);
-                    return;
-                }
-
-                if(getPassword.length()<8){
-                     errorMessage.setText(R.string.invalid_password);
-                     return;
-                 }
-
+                 String getUserName=fullName.getText().toString();
+                 String getEmail=email.getText().toString().trim();
+                 String getPassword=password.getText().toString();
                  String getPasswordConfirmation=passwordConfirmation.getText().toString();
 
-                 if(getPasswordConfirmation.isEmpty()){
-                     errorMessage.setText(R.string.empty_field_message);
-                     return;
+                 signUpPresenter.checkValidation(getUserName,getEmail,getPassword,getPasswordConfirmation);
+
+                 if(errorMessage.getText()==""){
+                     signUpPresenter.doSignUp(getUserName,getEmail,getPassword,getPasswordConfirmation);
                  }
-
-
-                 signUpPresenter.signUpButtonClick(getUserName,getEmail,getPassword,getPasswordConfirmation);
-
             }
         });
-
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +55,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     }
     @Override
-    public void showSignUpError(String text) {
+    public void showErrorMessage(int text) {
         errorMessage.setText(text);
 
+    }
+
+    @Override
+    public void showSignUpError(String message) {
+        errorMessage.setText(message);
     }
 
     @Override
@@ -99,37 +79,33 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     public void showSignUpSuccessFull() {
         setProgressBarVisible();
         MainActivity.start(this);
+        Toast.makeText(this, R.string.welcome, Toast.LENGTH_SHORT).show();
         finish();
     }
 
+
     @Override
-    public void showEmailValidationError() {
-        errorMessage.setText(R.string.email_validation_error);
+    public void errorMassageGone() {
+        errorMessage.setText("");
     }
 
     private void initialView() {
         logInBtn=findViewById(R.id.log_in_Button);
         signUpBtn=findViewById(R.id.sign_up_button);
         signUpGoogleBtn=findViewById(R.id.sign_up_google_btn);
-
         fullName=findViewById(R.id.sign_up_Full_name);
         email=findViewById(R.id.sign_up_email);
         password=findViewById(R.id.sing_up_password);
         passwordConfirmation=findViewById(R.id.sing_up_password_confirmation);
         errorMessage=findViewById(R.id.error_Message);
-
         progressBar=(ProgressBar) findViewById(R.id.progressBar);
     }
-
 
     @Override
     public void showNetworkError() {
         setProgressBarVisible();
         errorMessage.setText(R.string.network_not_available_error);
-
     }
-
-
 
     @Override
     public Context getContext() {
@@ -141,6 +117,4 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         super.onDestroy();
         signUpPresenter.onDetach();
     }
-
-
 }

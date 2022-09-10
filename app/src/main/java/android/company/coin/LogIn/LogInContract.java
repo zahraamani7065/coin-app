@@ -5,14 +5,13 @@ import android.company.coin.BaseView;
 
 public interface LogInContract {
     interface View extends BaseView {
-        void showSignUpError();
-        void setProgressBarVisibility();
+        void setProgressBarVisible();
+        void setProgressBarGone();
+        void showEmailValidationError();
 
     }
     interface Presenter extends BasePresenter<View> {
-        void doLogIn(String userName,String passWord);
-        void goToLogIn();
-
+        void doLogIn(String email,String passWord);
 
     }
 }

@@ -37,17 +37,18 @@
             android:textStyle="normal"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="66px"
-            android:background="@color/white"
-            android:text="Sign up "
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/log_in_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="66px"
+                android:background="@color/white"
+                android:text="Sign up "
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
     </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -201,7 +202,7 @@
                 android:layout_marginTop="20dp"
                 >
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/logIn_progressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:max="1"
@@ -211,7 +212,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/error_Message"
+                android:id="@+id/LogIn_error_Message"
                 android:textSize="12sp"
                 android:textColor="#ff0000"
                 android:paddingBottom="50dp"

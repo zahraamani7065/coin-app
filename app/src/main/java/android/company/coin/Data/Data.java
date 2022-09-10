@@ -3,9 +3,9 @@ package android.company.coin.Data;
 
 import android.company.coin.ApiService;
 import android.company.coin.AppConstant;
-import android.company.coin.Data.Model.Root;
-import android.company.coin.Data.Model.SignUpRequest;
-import android.company.coin.Data.Model.User;
+import android.company.coin.Data.Model.LogIn.LogInRequest;
+import android.company.coin.Data.Model.SignUp.Root;
+import android.company.coin.Data.Model.SignUp.SignUpRequest;
 import android.company.coin.Utils.Commons;
 import android.content.Context;
 
@@ -18,14 +18,8 @@ public class Data {
     private static Data data;
     private final ApiService apiService;
 
-
-
     public static Data getInstance(Context context) {
 
-//        HttpLoggingInterceptor httpLoggingInterceptor=new HttpLoggingInterceptor();
-//        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//
-//        OkHttpClient okHttpClient=new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
         if(data==null){
         ApiService apiService=new Retrofit.Builder()
                     .baseUrl(AppConstant.BASE_URL)
@@ -40,7 +34,6 @@ public class Data {
         return data;
     }
 
-
     public Data(ApiService apiService) {
         this.apiService=apiService;
     }
@@ -52,6 +45,12 @@ public class Data {
         signUpRequest.setEmail(email);
         signUpRequest.setPasswordConfirmation(passwordConfirmation);
         return apiService.requestSignUp(signUpRequest);
+    }
 
+    public Single<android.company.coin.Data.Model.LogIn.Root> LogInRequest(String email,String password){
+        LogInRequest logInRequest=new LogInRequest();
+        logInRequest.setEmail(email);
+        logInRequest.setPassword(password);
+        return apiService.requestLogIn(logInRequest);
     }
 }

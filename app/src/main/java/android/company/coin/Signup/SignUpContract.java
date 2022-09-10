@@ -5,10 +5,11 @@ import android.company.coin.BaseView;
 
 public interface SignUpContract {
 
-
     interface View extends BaseView {
 
-        void showSignUpError(String massage);
+        void showErrorMessage(int massage);
+
+        void showSignUpError(String message);
 
         void setProgressBarVisible();
 
@@ -16,17 +17,12 @@ public interface SignUpContract {
 
         void showSignUpSuccessFull();
 
-        void showEmailValidationError();
+        void errorMassageGone();
     }
-
 
     interface Presenter extends BasePresenter<SignUpContract.View> {
 
-        void signUpButtonClick(String userName,String email,String passWord,String passwordConfirmation2);
-
-        void goToLogIn();
-
-        void logInButtonClick(String userName,String email,String password);
-
+        void doSignUp(String userName, String email, String passWord, String passwordConfirmation2);
+        void checkValidation(String userName,String email,String passWord,String passwordConfirmation2);
     }
 }

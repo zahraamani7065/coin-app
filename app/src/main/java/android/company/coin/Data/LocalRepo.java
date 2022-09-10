@@ -1,7 +1,7 @@
 package android.company.coin.Data;
 
 import android.company.coin.AppConstant;
-import android.company.coin.Data.Model.User;
+import android.company.coin.Data.Model.SignUp.User;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;

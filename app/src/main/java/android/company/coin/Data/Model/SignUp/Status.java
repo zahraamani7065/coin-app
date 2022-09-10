@@ -1,4 +1,4 @@
-package android.company.coin.Data.Model;
+package android.company.coin.Data.Model.SignUp;
 
 public class Status {
     public Status(String message) {

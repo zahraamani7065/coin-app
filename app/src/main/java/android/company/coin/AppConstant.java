@@ -10,6 +10,4 @@ public class AppConstant {
     public static String TAG="test";
     public static final String USER_INFO="_user_info";
 
-
-
 }

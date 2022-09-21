@@ -2,10 +2,10 @@ package android.company.coin.Signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.company.coin.LogIn.LogInActivity;
-import android.company.coin.Main.MainActivity;
+import android.company.coin.Main.HomePage;
 import android.company.coin.R;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -79,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     @Override
     public void showSignUpSuccessFull() {
         setProgressBarVisible();
-        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+        startActivity(new Intent(SignUpActivity.this, HomePage.class));
         Toast.makeText(this, R.string.welcome, Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -109,7 +109,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
-    public Context getContext() {
+    public Activity getContext() {
         return this;
     }
 

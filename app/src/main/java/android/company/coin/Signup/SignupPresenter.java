@@ -56,7 +56,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
                         }
 
                         else{
-                            view.showSignUpError(root.getMessage());
+                            view.showErrorMessage(R.string.login_failed);
                             view.setProgressBarGone();
                         }
 

@@ -2,11 +2,11 @@ package android.company.coin.LogIn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.company.coin.Data.LocalRepo;
-import android.company.coin.Main.MainActivity;
+import android.company.coin.Main.HomePage;
 import android.company.coin.R;
 import android.company.coin.Signup.SignUpActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -63,7 +63,7 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
 
 
     @Override
-    public Context getContext() {
+    public Activity getContext() {
         return this;
     }
 
@@ -89,7 +89,7 @@ public class LogInActivity extends AppCompatActivity implements LogInContract.Vi
 
     @Override
     public void showSuccess() {
-        startActivity(new Intent(LogInActivity.this, MainActivity.class));
+        startActivity(new Intent(LogInActivity.this, HomePage.class));
         Toast.makeText(this, R.string.welcome, Toast.LENGTH_SHORT).show();
         finish();
     }

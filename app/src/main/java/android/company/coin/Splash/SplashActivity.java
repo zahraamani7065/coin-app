@@ -3,7 +3,7 @@ package android.company.coin.Splash;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.company.coin.Data.LocalRepo;
-import android.company.coin.Main.MainActivity;
+import android.company.coin.Main.HomePage;
 import android.company.coin.R;
 import android.company.coin.Signup.SignUpActivity;
 import android.content.Intent;
@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                if(LocalRepo.getInstance(getApplicationContext()).getUserInfoSignUp()!=null || LocalRepo.getInstance(getApplicationContext()).getUserInfoLogIn()!=null){
-                   startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                   startActivity(new Intent(SplashActivity.this, HomePage.class));
                }
                else{
                 startActivity(new Intent(SplashActivity.this, SignUpActivity.class));

@@ -1,7 +1,7 @@
 package android.company.coin;
 
-import android.content.Context;
+import android.app.Activity;
 
 public interface ContextProvider {
-    Context getContext();
+    Activity getContext();
 }

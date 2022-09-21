@@ -88,9 +88,5 @@ public class LogInPresenter implements LogInContract.Presenter{
             view.setProgressBarGone();
             return;
         }
-
-
-
     }
-
 }

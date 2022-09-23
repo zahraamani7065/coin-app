@@ -64,6 +64,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.2.1'
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.2"
 
-
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
 }

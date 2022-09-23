@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     EditText fullName,email,password,passwordConfirmation;
     ProgressBar progressBar;
     SignUpContract.Presenter signUpPresenter;
-    public static TextView errorMessage;
+    public TextView errorMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

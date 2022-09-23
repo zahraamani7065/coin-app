@@ -11,12 +11,15 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class Commons {
 
-    public static boolean CheckConnection(Context context){
+    public static boolean CheckConnection(Context context)
+    {
         ConnectivityManager connectivityManager=(ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
         return networkInfo!=null && (networkInfo.isConnected());
     }
-    public static OkHttpClient getHttpClient(){
+
+    public static OkHttpClient getHttpClient()
+    {
         HttpLoggingInterceptor interceptor=new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
@@ -24,6 +27,5 @@ public class Commons {
                 .addNetworkInterceptor(new StethoInterceptor())
                 .build();
     }
-
 
 }

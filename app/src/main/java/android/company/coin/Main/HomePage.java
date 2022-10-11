@@ -25,12 +25,12 @@ public class HomePage extends AppCompatActivity implements HomePageContract.View
         setContentView(R.layout.activity_home_page);
         initialViews();
         presenter.onAttach(this);
-        NavHostFragment navHostFragment= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-        presenter.navigation(bottomNavigationView,navHostFragment);
-//        NavController navController= Navigation.findNavController(this,R.id.fragment);
-//        NavigationUI.setupWithNavController(bottomNavigationView,navController);
+//        NavHostFragment navHostFragment= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        presenter.navigation(bottomNavigationView);
+
 
     }
+
     @Override
     public void showNetworkError() {
     }

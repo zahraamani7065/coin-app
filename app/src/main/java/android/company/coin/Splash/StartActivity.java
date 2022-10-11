@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class SplashActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
     private TextView splashText;
     Animation animationText;
 
@@ -34,10 +34,10 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                if(LocalRepo.getInstance(getApplicationContext()).getUserInfoSignUp()!=null || LocalRepo.getInstance(getApplicationContext()).getUserInfoLogIn()!=null){
-                   startActivity(new Intent(SplashActivity.this , HomePage.class));
+                   startActivity(new Intent(StartActivity.this , HomePage.class));
                }
                else{
-                startActivity(new Intent(SplashActivity.this , SignUpActivity.class));
+                startActivity(new Intent(StartActivity.this , SignUpActivity.class));
                }
                 finish();
             }

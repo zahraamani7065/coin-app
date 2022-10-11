@@ -11,6 +11,7 @@
         <entry key="..\:/android projects/coin/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1" />
         <entry key="..\:/android projects/coin/app/src/main/res/drawable/ic_baseline_save_alt_24.xml" value="0.1" />
         <entry key="..\:/android projects/coin/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/android projects/coin/app/src/main/res/drawable/shape_circle.xml" value="0.1" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout-sw600dp/activity_home_page.xml" value="0.190625" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/activity_home_page.xml" value="0.128" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/activity_log_in.xml" value="0.2" />
@@ -27,7 +28,10 @@
         <entry key="..\:/android projects/coin/app/src/main/res/layout/fragment_saved.xml" value="0.10400000000000001" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/fragment_saved2.xml" value="0.21342592592592594" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/gu.xml" value="0.1" />
+        <entry key="..\:/android projects/coin/app/src/main/res/layout/item.xml" value="0.22175925925925927" />
+        <entry key="..\:/android projects/coin/app/src/main/res/layout/item_coin.xml" value="0.22268518518518518" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/item_coins_list.xml" value="0.225" />
+        <entry key="..\:/android projects/coin/app/src/main/res/layout/item_crypto.xml" value="0.22268518518518518" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/item_home_fragment.xml" value="0.225" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/log_in_activitty.xml" value="0.264" />
         <entry key="..\:/android projects/coin/app/src/main/res/layout/splash_screan.xml" value="0.190625" />

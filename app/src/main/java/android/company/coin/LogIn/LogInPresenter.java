@@ -6,7 +6,6 @@ import android.company.coin.Data.Model.LogIn.Root;
 import android.company.coin.R;
 import android.company.coin.Utils.Commons;
 
-import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -36,7 +35,7 @@ public class LogInPresenter implements LogInContract.Presenter{
     @Override
     public void doLogIn(String email, String passWord) {
         view.setProgressBarVisible();
-        Data.getInstance(view.getContext()).LogInRequest(email,passWord)
+        Data.getInstanceLog(view.getContext()).LogInRequest(email,passWord)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Root>() {

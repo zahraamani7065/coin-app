@@ -12,7 +12,8 @@ public interface HomePageContract {
         void showTitle();
     }
     interface Presenter extends BasePresenter<View> {
-        void navigation(BottomNavigationView view, NavHostFragment navHostFragment);
+        void navigation(BottomNavigationView view);
+        void getListCrypto();
     }
 
 }

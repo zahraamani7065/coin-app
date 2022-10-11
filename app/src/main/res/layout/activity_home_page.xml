@@ -14,7 +14,7 @@
         >
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarMain"
-            app:layout_scrollFlags="scroll||enterAlways"
+            app:layout_scrollFlags="scroll|enterAlways"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -26,7 +26,8 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:navGraph="@navigation/nav_main" />
+        app:navGraph="@navigation/nav_main"
+        android:layout_marginBottom="57dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation_main"

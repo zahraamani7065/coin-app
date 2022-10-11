@@ -20,7 +20,7 @@
             android:name=".Signup.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Splash.SplashActivity"
+            android:name=".Splash.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

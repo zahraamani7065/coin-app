@@ -3,11 +3,14 @@ package android.company.coin.Data;
 
 import android.company.coin.ApiService;
 import android.company.coin.AppConstant;
+import android.company.coin.Data.Model.ListCoin.CryptoCurrencyList;
 import android.company.coin.Data.Model.LogIn.LogInRequest;
 import android.company.coin.Data.Model.SignUp.Root;
 import android.company.coin.Data.Model.SignUp.SignUpRequest;
 import android.company.coin.Utils.Commons;
 import android.content.Context;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.Retrofit;
@@ -16,9 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Data {
     private static Data data;
+    private static Data getData;
     private final ApiService apiService;
 
-    public static Data getInstance(Context context) {
+    public static Data getInstanceLog(Context context) {
 
         if(data==null){
         ApiService apiService=new Retrofit.Builder()
@@ -27,11 +31,20 @@ public class Data {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(Commons.getHttpClient())
                     .build().create(ApiService.class);
-
         data=new Data(apiService);
         }
-
         return data;
+    }
+    public static Data getInstance(){
+        if(getData==null){
+            ApiService apiService=new Retrofit.Builder()
+                    .baseUrl(AppConstant.BASE_URL_COIN)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build().create(ApiService.class);
+            getData=new Data(apiService);
+        }
+        return getData;
     }
 
     public Data(ApiService apiService) {
@@ -52,5 +65,8 @@ public class Data {
         logInRequest.setEmail(email);
         logInRequest.setPassword(password);
         return apiService.requestLogIn(logInRequest);
+    }
+    public Single<android.company.coin.Data.Model.ListCoin.Root>  getCryptoList(){
+        return apiService.getCryptoList();
     }
 }

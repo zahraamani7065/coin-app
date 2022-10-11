@@ -36,7 +36,7 @@ public class SignupPresenter implements SignUpContract.Presenter{
         view.errorMassageGone();
         view.setProgressBarVisible();
 
-        Data.getInstance(view.getContext()).sinUpRequest(userName,email,passWord,passwordConfirmation)
+        Data.getInstanceLog(view.getContext()).sinUpRequest(userName,email,passWord,passwordConfirmation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Root>() {

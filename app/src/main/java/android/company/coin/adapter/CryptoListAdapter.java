@@ -46,7 +46,7 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
     public void onBindViewHolder(@NonNull ListCryptoViewHolder holder, int position) {
 
         holder.coinName.setText(dataList.get(position).getName());
-        holder.coinNumber.setText(String.valueOf(dataList.get(position).getId()));
+        holder.coinNumber.setText(String.valueOf(position + 1));
         holder.coinSymbol.setText(dataList.get(position).getSymbol());
         Picasso.get().load("https://s2.coinmarketcap.com/static/img/coins/64x64/"+dataList.get(position).getId()+".png")
                 .into(holder.coinIcon);

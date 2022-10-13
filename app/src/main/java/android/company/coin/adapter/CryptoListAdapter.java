@@ -9,16 +9,19 @@ import android.company.coin.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -64,7 +67,24 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
 //                .setPlaceHolder(R.mipmap.ic_launcher,R.mipmap.ic_launcher)
 //                .load("https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/"+dataList.get(position).getId()+".svg",holder.coinDiagram);
 
-        GlideToVectorYou.justLoadImage((Activity) context, Uri.parse("https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/"+dataList.get(position).getId()+".svg"),holder.coinDiagram);
+//     
+        GlideToVectorYou
+                .init()
+                .with((Activity) context)
+                .withListener(new GlideToVectorYouListener() {
+                    @Override
+                    public void onLoadFailed() {
+                        Log.e("image svg","image svg failed");
+                    }
+
+                    @Override
+                    public void onResourceReady() {
+                        holder.progressBar.setVisibility(View.GONE);
+                        holder.coinDiagram.setVisibility(View.VISIBLE);
+                    }
+                })
+                .load(Uri.parse("https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/"+dataList.get(position).getId()+".svg"),holder.coinDiagram);
+
     }
 
     @Override
@@ -75,6 +95,7 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
 class ListCryptoViewHolder extends RecyclerView.ViewHolder{
     TextView coinNumber,coinName,coinSymbol,coinPrice,coinChangPrice;
     ImageView coinIcon,coinDiagram;
+    ProgressBar progressBar;
     public ListCryptoViewHolder(@NonNull View itemView) {
         super(itemView);
         coinNumber=itemView.findViewById(R.id.number_item_coin);
@@ -84,6 +105,7 @@ class ListCryptoViewHolder extends RecyclerView.ViewHolder{
         coinChangPrice=itemView.findViewById(R.id.chang_price_item_Coin);
         coinIcon=itemView.findViewById(R.id.icon_item_coin);
         coinDiagram=itemView.findViewById(R.id.dialog_Item_coin);
+        progressBar = itemView.findViewById(R.id.progress_bar_item);
     }
 
 }

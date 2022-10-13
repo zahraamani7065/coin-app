@@ -82,6 +82,17 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progress_bar_item"
+        android:layout_width="65dp"
+        android:layout_height="38dp"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="5dp"
+        android:visibility="visible"
+        android:layout_marginTop="3dp"
+        />
+
     <ImageView
         android:id="@+id/dialog_Item_coin"
         android:layout_width="65dp"
@@ -89,7 +100,7 @@
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="5dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginTop="3dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

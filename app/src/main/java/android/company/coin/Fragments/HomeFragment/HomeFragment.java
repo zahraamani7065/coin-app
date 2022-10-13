@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ahmadrosid.svgloader.SvgLoader;
 
 public class HomeFragment extends Fragment implements HomeFragmentContract.View {
   RecyclerView rv;

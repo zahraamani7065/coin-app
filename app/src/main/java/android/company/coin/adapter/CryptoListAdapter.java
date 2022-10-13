@@ -8,6 +8,7 @@ import android.company.coin.Data.Model.ListCoin.Quote;
 import android.company.coin.R;
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ahmadrosid.svgloader.SvgLoader;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -62,6 +63,8 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
 //                .with((Activity) context)
 //                .setPlaceHolder(R.mipmap.ic_launcher,R.mipmap.ic_launcher)
 //                .load("https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/"+dataList.get(position).getId()+".svg",holder.coinDiagram);
+
+        GlideToVectorYou.justLoadImage((Activity) context, Uri.parse("https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/"+dataList.get(position).getId()+".svg"),holder.coinDiagram);
     }
 
     @Override

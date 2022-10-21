@@ -49,6 +49,7 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                                 adapter=new CryptoListAdapter(root.getData().getCryptoCurrencyList(),view.getContext());
                                 rv.setAdapter(adapter);
                                 adapter.notifyDataSetChanged();
+                                view.showLoadMore();
                             }
 
                             @Override
@@ -58,5 +59,11 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                                 Log.i("error message", "onError: "+e);
                             }
                         });
+    }
+
+    @Override
+    public void loadMoreItems() {
+        CryptoListAdapter.pos=CryptoListAdapter.pos+10;
+        adapter.notifyDataSetChanged();
     }
 }

@@ -1,13 +1,8 @@
 package android.company.coin.Fragments.HomeFragment;
 
-import android.app.Activity;
-import android.app.Application;
-import android.company.coin.R;
-import android.company.coin.adapter.CryptoListAdapter;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.company.coin.R;
+import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +15,7 @@ import android.widget.TextView;
 
 public class HomeFragment extends Fragment implements HomeFragmentContract.View {
   RecyclerView rv;
-  TextView loadTextView,errorMessage;
+  TextView loadTextView,errorMessage,loadMore;
   HomeFragmentContract.Presenter presenter;
 
 
@@ -38,28 +33,23 @@ public class HomeFragment extends Fragment implements HomeFragmentContract.View 
         rv=view.findViewById(R.id.rc_list_crypto);
         loadTextView=view.findViewById(R.id.loading_textView);
         errorMessage=view.findViewById(R.id.error_message_homeFragment);
+        loadMore=view.findViewById(R.id.load_more);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setHasFixedSize(true);
         presenter.onAttach(this);
         presenter.loadCoinList(rv);
+        loadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.loadMoreItems();
+            }
+        });
         return view;
-
     }
 
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        presenter=new HomeFragmentPresenter();
-//        rv=getActivity().findViewById(R.id.rc_list_crypto);
-//        loadTextView=getActivity().findViewById(R.id.loading_textView);
-//        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-//        presenter.onAttach(this);
-//        presenter.loadCoinList(rv);
-//    }
 
     @Override
     public void showNetworkError() {
-
     }
 
     @Override
@@ -76,6 +66,12 @@ public class HomeFragment extends Fragment implements HomeFragmentContract.View 
     public void showErrorMessage(Throwable e) {
         errorMessage.setVisibility(View.VISIBLE);
         errorMessage.setText(e.toString());
+    }
+
+    @Override
+    public void showLoadMore() {
+        loadMore.setVisibility(View.VISIBLE);
+
     }
 
 }

@@ -30,6 +30,7 @@ import java.util.List;
 public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder> {
    List<CryptoCurrencyList> dataList;
    Context context;
+   public static int pos=10;
 
     public CryptoListAdapter(List<CryptoCurrencyList>  cryptoCurrencyLists, Context context) {
         this.context=context;
@@ -62,12 +63,7 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
             holder.coinChangPrice.setText(String.format("%02.02f",dataList.get(position).getQuotes().get(0).getPercentChange24h()));
         }
         holder.coinPrice.setText("$"+String.format("%02.02f", dataList.get(position).getQuotes().get(0).getPrice()));
-//        SvgLoader.pluck()
-//                .with((Activity) context)
-//                .setPlaceHolder(R.mipmap.ic_launcher,R.mipmap.ic_launcher)
-//                .load("https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/"+dataList.get(position).getId()+".svg",holder.coinDiagram);
 
-//     
         GlideToVectorYou
                 .init()
                 .with((Activity) context)
@@ -89,7 +85,7 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return pos;
     }
 }
 class ListCryptoViewHolder extends RecyclerView.ViewHolder{

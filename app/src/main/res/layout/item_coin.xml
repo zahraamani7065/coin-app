@@ -16,7 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         />
+
 
     <ImageView
         android:id="@+id/icon_item_coin"
@@ -57,13 +59,15 @@
 
             />
     </LinearLayout>
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
 
         <TextView
             android:id="@+id/price_item_coin"
@@ -71,16 +75,23 @@
             android:layout_height="wrap_content"
             android:text="$100000"
             android:textAlignment="textEnd"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true"
+            />
 
         <TextView
             android:id="@+id/chang_price_item_Coin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="priceChange"
-            android:textColor="@color/backgroundColor" />
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="@color/backgroundColor"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar_item"
@@ -88,18 +99,18 @@
         android:layout_height="38dp"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:visibility="visible"
         android:layout_marginTop="3dp"
         />
 
     <ImageView
         android:id="@+id/dialog_Item_coin"
-        android:layout_width="65dp"
-        android:layout_height="38dp"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:visibility="gone"
         android:layout_marginTop="3dp"
         />

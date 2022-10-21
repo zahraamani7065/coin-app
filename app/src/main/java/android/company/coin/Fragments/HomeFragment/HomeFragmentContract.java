@@ -10,9 +10,11 @@ public interface HomeFragmentContract {
         void showLoading();
         void GoneLoading();
         void showErrorMessage(Throwable e);
+        void showLoadMore();
     }
     interface Presenter extends BasePresenter<View>{
         void loadCoinList(RecyclerView rv);
+        void loadMoreItems();
     }
 
 }

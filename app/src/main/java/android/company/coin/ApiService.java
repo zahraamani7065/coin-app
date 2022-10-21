@@ -20,7 +20,7 @@ public interface ApiService {
     @POST("login")
     Single<android.company.coin.Data.Model.LogIn.Root> requestLogIn(@Body LogInRequest logInRequest);
 
-    @GET("v3/cryptocurrency/listing?start=1&limit=20")
+    @GET("v3/cryptocurrency/listing?start=1&limit")
     Single<android.company.coin.Data.Model.ListCoin.Root> getCryptoList();
 
 }

@@ -3,6 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ChatBarFragment.ChatBarFragment">
+    tools:context=".Fragments.HomeFragment.HomeFragment"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_message_chatBarFragment"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/shimmer_chatBar"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+                <include layout="@layout/shimmer_layout"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_list_crypto_chatBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/load_more_chatBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="load more..."
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

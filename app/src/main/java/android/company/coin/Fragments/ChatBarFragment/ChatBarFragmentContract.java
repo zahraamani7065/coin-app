@@ -1,11 +1,9 @@
-package android.company.coin.Fragments.HomeFragment;
+package android.company.coin.Fragments.ChatBarFragment;
 
 import android.company.coin.BasePresenter;
 import android.company.coin.BaseView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-public interface HomeFragmentContract {
+public interface ChatBarFragmentContract {
     interface View extends BaseView{
         void showErrorMessage();
         void showLoadMore();
@@ -15,10 +13,6 @@ public interface HomeFragmentContract {
     interface Presenter extends BasePresenter<View>{
         void loadCoinList();
         void loadMoreItems();
-        void loadTopCoins();
-        void loadTopGainers();
-        void loadTopLosers();
-
     }
 
 }

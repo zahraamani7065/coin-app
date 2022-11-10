@@ -3,14 +3,11 @@ package android.company.coin.Data;
 
 import android.company.coin.ApiService;
 import android.company.coin.AppConstant;
-import android.company.coin.Data.Model.ListCoin.CryptoCurrencyList;
 import android.company.coin.Data.Model.LogIn.LogInRequest;
 import android.company.coin.Data.Model.SignUp.Root;
 import android.company.coin.Data.Model.SignUp.SignUpRequest;
 import android.company.coin.Utils.Commons;
 import android.content.Context;
-
-import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.Retrofit;
@@ -69,4 +66,14 @@ public class Data {
     public Single<android.company.coin.Data.Model.ListCoin.Root>  getCryptoList(){
         return apiService.getCryptoList();
     }
+    public Single<android.company.coin.Data.Model.TopCoins.Root> getTopCoins(){
+        return apiService.getTopCoins();
+    }
+    public Single<android.company.coin.Data.Model.TopGainers.Root> getTopGainers(){
+        return apiService.getTopGainers();
+    }
+    public Single<android.company.coin.Data.Model.TopLosers.Root>  getTopLosers(){
+        return apiService.getTopLosers();
+    }
+
 }

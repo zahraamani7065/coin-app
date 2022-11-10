@@ -10,9 +10,10 @@
     <color name="blue">#7364FF</color>
     <color name="black">#000000</color>
     <color name="colorPrimary">#666666</color>
-    <color name="colorPrimaryDark">#303F9F</color>
     <color name="backgroundDark">#009E60</color>
     <color name="backgroundColor">#33FF77</color>
     <color name="red">#FF0000</color>
+    <color name="shimmer_color">#BFBDBD</color>
+    <color name="colorPrimaryDark">#006400</color>
 
 </resources>

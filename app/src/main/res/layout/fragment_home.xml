@@ -10,28 +10,84 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-   <TextView
-       android:id="@+id/loading_textView"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:textSize="18sp"
-       android:visibility="gone"
-       android:layout_gravity="center"
-       android:text="loading..."
-       android:layout_marginTop="20dp"
-       android:textColor="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_top_coins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/shimmer_color"
+
+                android:layout_marginEnd="10dp"
+                android:text="Top coins"
+                android:textAllCaps="false"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_top_gainers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/shimmer_color"
+                android:layout_marginEnd="10dp"
+                android:text="Top gainers"
+                android:textAllCaps="false"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_top_losers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/shimmer_color"
+                android:text="Top Losers"
+                android:textAllCaps="false"
+                />
+
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error_message_homeFragment"
             android:textSize="16sp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:gravity="center"
             />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/shimmer">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            <include layout="@layout/shimmer_layout"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_list_crypto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         />
         <TextView
             android:id="@+id/load_more"

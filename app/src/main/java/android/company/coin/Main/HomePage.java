@@ -2,15 +2,9 @@ package android.company.coin.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 
 import android.app.Activity;
 import android.company.coin.R;
-import android.content.Context;
 import android.os.Bundle;
 
 
@@ -24,11 +18,10 @@ public class HomePage extends AppCompatActivity implements HomePageContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         initialViews();
-        presenter.onAttach(this);
+
 //        NavHostFragment navHostFragment= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
         presenter.navigation(bottomNavigationView);
-
-
+        presenter.onAttach(this);
     }
 
     @Override

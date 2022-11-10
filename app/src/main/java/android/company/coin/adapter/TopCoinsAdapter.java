@@ -1,16 +1,11 @@
 package android.company.coin.adapter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Application;
-import android.company.coin.Data.Model.ListCoin.CryptoCurrencyList;
-import android.company.coin.Data.Model.ListCoin.Quote;
+import android.company.coin.Data.Model.TopCoins.CryptoCurrencyList;
 import android.company.coin.R;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.net.Uri;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,39 +15,33 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder> {
-   List<CryptoCurrencyList> dataList;
-   Context context;
-   public static int pos=10;
+public class TopCoinsAdapter extends RecyclerView.Adapter<TopCoinsViewHolder>{
+    List<CryptoCurrencyList> dataList;
+    Context context;
+    public static int pos=10;
 
-    public CryptoListAdapter(List<CryptoCurrencyList>  cryptoCurrencyLists, Context context) {
-        this.context=context;
-        this.dataList = cryptoCurrencyLists;
+    public TopCoinsAdapter(List<CryptoCurrencyList> dataList, Context context) {
+        this.dataList = dataList;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public ListCryptoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public TopCoinsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_coin,parent,false);
-        return new ListCryptoViewHolder(view);
+        return new TopCoinsViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull ListCryptoViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull TopCoinsViewHolder holder, int position) {
         holder.coinName.setText(dataList.get(position).getName());
         holder.coinNumber.setText(String.valueOf(position + 1));
         holder.coinSymbol.setText(dataList.get(position).getSymbol());
@@ -88,16 +77,17 @@ public class CryptoListAdapter extends RecyclerView.Adapter<ListCryptoViewHolder
 
     }
 
+
     @Override
     public int getItemCount() {
-        return pos;
+         return pos;
     }
 }
-class ListCryptoViewHolder extends RecyclerView.ViewHolder{
+class TopCoinsViewHolder extends RecyclerView.ViewHolder{
     TextView coinNumber,coinName,coinSymbol,coinPrice,coinChangPrice;
     ImageView coinIcon,coinDiagram;
     ProgressBar progressBar;
-    public ListCryptoViewHolder(@NonNull View itemView) {
+    public TopCoinsViewHolder(@NonNull View itemView) {
         super(itemView);
         coinNumber=itemView.findViewById(R.id.number_item_coin);
         coinName=itemView.findViewById(R.id.name_item_coin);

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="10dp"
+
+
+    >
     <TextView
         android:id="@+id/number_item_coin"
-        android:layout_width="36dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/shimmer_color"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +27,11 @@
 
     <ImageView
         android:id="@+id/icon_item_coin"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="50dp"
         android:background="@drawable/shape_circle"
+        android:backgroundTint="@color/shimmer_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/number_item_coin"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,50 +41,49 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/icon_item_coin"
-        app:layout_constraintTop_toTopOf="parent">
+        >
 
         <TextView
             android:id="@+id/name_item_coin"
-            android:layout_width="110dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="crypto name"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/shimmer_color"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:singleLine="true"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Symbol_item_coin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="Symbol"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/shimmer_color"
             android:textSize="14sp"
 
             />
     </LinearLayout>
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
 
         >
 
         <TextView
             android:id="@+id/price_item_coin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$100000"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/shimmer_color"
             android:textAlignment="textEnd"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -86,16 +92,17 @@
 
         <TextView
             android:id="@+id/chang_price_item_Coin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="14sp"
-            android:textColor="@color/backgroundColor"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            />
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/shimmer_color"
+            android:textColor="@color/backgroundColor"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar_item"
@@ -104,18 +111,24 @@
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
+        android:background="@color/shimmer_color"
         android:layout_marginTop="3dp"
         />
 
     <ImageView
         android:id="@+id/dialog_Item_coin"
-        android:layout_width="70dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="40dp"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/shimmer_color"
         android:layout_marginTop="3dp"
+        android:layout_marginLeft="4dp"
+
         />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

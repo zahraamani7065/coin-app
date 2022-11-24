@@ -64,29 +64,25 @@ public class HomeFragment extends Fragment implements HomeFragmentContract.View 
         });
 
         topCoinsBtn.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                rv.setVisibility(View.GONE);
+
                 shimmerFrameLayout.startShimmer();
-                topGainersBtn.setBackgroundResource(R.drawable.button_background_top_coins);
-                topLosersBtn.setBackgroundResource(R.drawable.button_background_top_coins);
-                topCoinsBtn.setBackgroundResource(R.drawable.button_bachground_coins_clicked);
+                shimmerFrameLayout.setVisibility(View.VISIBLE);
+                loadMore.setVisibility(View.GONE);
+                rv.setVisibility(View.GONE);
                 presenter.loadTopCoins();
                 selectedCoin="topCoins";
             }
         });
 
         topGainersBtn.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-
-                rv.setVisibility(View.GONE);
                 shimmerFrameLayout.startShimmer();
-                topGainersBtn.setBackgroundResource(R.drawable.button_bachground_coins_clicked);
-                topLosersBtn.setBackgroundResource(R.drawable.button_background_top_coins);
-                topCoinsBtn.setBackgroundResource(R.drawable.button_background_top_coins);
+                shimmerFrameLayout.setVisibility(View.VISIBLE);
+                loadMore.setVisibility(View.GONE);
+                rv.setVisibility(View.GONE);
                 presenter.loadTopGainers();
                 selectedCoin="gainerCoins";
 
@@ -94,15 +90,12 @@ public class HomeFragment extends Fragment implements HomeFragmentContract.View 
         });
 
         topLosersBtn.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                topGainersBtn.setBackgroundResource(R.drawable.button_background_top_coins);
-                topLosersBtn.setBackgroundResource(R.drawable.button_bachground_coins_clicked);
-                topCoinsBtn.setBackgroundResource(R.drawable.button_background_top_coins);
-                rv.setVisibility(View.GONE);
+                loadMore.setVisibility(View.GONE);
                 shimmerFrameLayout.startShimmer();
-
+                shimmerFrameLayout.setVisibility(View.VISIBLE);
+                rv.setVisibility(View.GONE);
                 presenter.loadTopLosers();
                 selectedCoin="LoserCoins";
             }
@@ -139,6 +132,12 @@ public class HomeFragment extends Fragment implements HomeFragmentContract.View 
     public void showRecyclerView() {
         rv.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    public void setGoneErrorMessage() {
+        errorMessage.setVisibility(View.GONE);
+    }
+
 
     private void viewBinding(View view){
         rv=view.findViewById(R.id.rc_list_crypto);

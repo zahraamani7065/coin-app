@@ -59,6 +59,7 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                             @Override
                             public void onSuccess(Root root) {
                                 view.stopShimmer();
+                                view.setGoneErrorMessage();
                                 view.showRecyclerView();
                                 Log.i("datas", "onSuccess: "+root.getData().getTotalCount());
                                 adapter=new CryptoListAdapter(root.getData().getCryptoCurrencyList(),view.getContext());
@@ -71,6 +72,7 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                             public void onError(Throwable e) {
                                 view.showErrorMessage();
                                 Log.i("error message", "onError: "+e);
+                                view.stopShimmer();
                             }
                         });
     }
@@ -90,6 +92,7 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                     @Override
                     public void onSuccess(android.company.coin.Data.Model.TopCoins.Root root) {
                         view.stopShimmer();
+                        view.setGoneErrorMessage();
                         view.showRecyclerView();
                         Log.i("datas", "onSuccess: "+root.getData().getTotalCount());
                         topCoinsAdapter=new TopCoinsAdapter(root.getData().getCryptoCurrencyList(),view.getContext());
@@ -100,7 +103,9 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        view.showErrorMessage();
+                        Log.i("error message", "onError: "+e);
+                        view.stopShimmer();
                     }
                 });
 
@@ -120,6 +125,7 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                     @Override
                     public void onSuccess(android.company.coin.Data.Model.TopGainers.Root root) {
                         view.stopShimmer();
+                        view.setGoneErrorMessage();
                         view.showRecyclerView();
                         Log.i("datas", "onSuccess: "+root.getData().getTotalCount());
                         topGainersAdapter=new TopGainersAdapter(root.getData().getCryptoCurrencyList(),view.getContext());
@@ -130,7 +136,9 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        view.showErrorMessage();
+                        Log.i("error message", "onError: "+e);
+                        view.stopShimmer();
                     }
                 });
 
@@ -150,20 +158,19 @@ public class HomeFragmentPresenter implements HomeFragmentContract.Presenter {
                     @Override
                     public void onSuccess(android.company.coin.Data.Model.TopLosers.Root root) {
                         view.stopShimmer();
+                        view.setGoneErrorMessage();
                         view.showRecyclerView();
-                        Log.i("datas", "onSuccess: "+root.getData().getTotalCount());
                         topLosersAdapter=new TopLosersAdapter(root.getData().getCryptoCurrencyList(),view.getContext());
                         rv.setAdapter(topLosersAdapter);
                         topLosersAdapter.notifyDataSetChanged();
                         view.showLoadMore();
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         view.showErrorMessage();
-                        Log.i("getTopLoser", "onError: "+e);
-
+                        Log.i("error message", "onError: "+e);
+                        view.stopShimmer();
                     }
                 });
 

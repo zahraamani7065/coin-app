@@ -11,7 +11,9 @@ public interface HomeFragmentContract {
         void showLoadMore();
         void stopShimmer();
         void showRecyclerView();
+        void setGoneErrorMessage();
     }
+
     interface Presenter extends BasePresenter<View>{
         void loadCoinList();
         void loadMoreItems();
